@@ -8,29 +8,34 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Servo;
 
 public class RobotMap {
 	
 	
 
 
-    public static Joystick controllerL = new Joystick(0);
-    public static Joystick controllerR = new Joystick(1);
+    public final Joystick controllerL = new Joystick(0);
+    public final Joystick controllerR = new Joystick(1);
 
-    public static Talon driveFR = new Talon(0);
-    public static Talon driveFL = new Talon(1);
-    public static Talon driveBL = new Talon(2);
-    public static Talon driveBR = new Talon(3);
+    public final Talon driveFR = new Talon(0);
+    public final Talon driveFL = new Talon(1);
+    public final Talon driveBL = new Talon(2);
+    public final Talon driveBR = new Talon(3);
 
-    public static SpeedControllerGroup left = new SpeedControllerGroup(driveFL, driveBL);
-    public static SpeedControllerGroup right = new SpeedControllerGroup(driveFR, driveBR);
+    public final SpeedControllerGroup left = new SpeedControllerGroup(driveFL, driveBL);
+    public final SpeedControllerGroup right = new SpeedControllerGroup(driveFR, driveBR);
 
-    public DifferentialDrive drive = new DifferentialDrive(left, right);
+	public final DifferentialDrive drive = new DifferentialDrive(left, right);
+	
+	public final Servo servo = new Servo(1);
+	public final JoystickButton buttonA = new JoystickButton(controllerL, 5);
+	public final JoystickButton buttonB = new JoystickButton(controllerL, 7);
+
 	
 	/*
 	public final JoystickButton buttonA = new JoystickButton(controller, Constants.aButton);
@@ -47,7 +52,14 @@ public class RobotMap {
 
 	//public final DigitalInput hatchSensor = new DigitalInput(1);
     
-    private static RobotMap robotMap;
+	private static RobotMap robotMap;
+	
+	public static RobotMap getRobotMap() {
+		if(robotMap == null) {
+			robotMap = new RobotMap();
+		}
+		return robotMap;
+	}
    
 
     public RobotMap ()
@@ -96,7 +108,7 @@ public class RobotMap {
 	public double getRightX()
 	{
 		return deadzone(controllerR.getX());
-	}
+	}	
 
 
 }
