@@ -7,20 +7,20 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.*;
 
 public class RobotMap {
 	
 	
 
 
-    public final Joystick controllerL = new Joystick(0);
-    public final Joystick controllerR = new Joystick(1);
+    public final XboxController xBox = new XboxController(0);
 
     public final Talon driveFR = new Talon(0);
     public final Talon driveFL = new Talon(1);
@@ -33,8 +33,7 @@ public class RobotMap {
 	public final DifferentialDrive drive = new DifferentialDrive(left, right);
 	
 	public final Servo servo = new Servo(1);
-	public final JoystickButton buttonA = new JoystickButton(controllerL, 5);
-	public final JoystickButton buttonB = new JoystickButton(controllerL, 7);
+	
 
 	
 	/*
@@ -92,22 +91,22 @@ public class RobotMap {
 	
 	public double getLeftY()
 	{
-		return -deadzone(controllerL.getY());
+		return -deadzone(xBox.getY(GenericHID.Hand.kLeft));
 	}
 	
 	public double getLeftX()
 	{
-		return deadzone(controllerL.getX());
+		return deadzone(xBox.getX(GenericHID.Hand.kLeft));
 	}
 	
-	public double getRightY()
+	public double getRightY() 
 	{
-		return -deadzone(controllerR.getY());
+		return -deadzone(xBox.getY(GenericHID.Hand.kLeft));
 	}
 	
 	public double getRightX()
 	{
-		return deadzone(controllerR.getX());
+		return deadzone(xBox.getX(GenericHID.Hand.kRight));
 	}	
 
 

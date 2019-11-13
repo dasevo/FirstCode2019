@@ -9,13 +9,13 @@ public class Servo {
     }
 
     public void servoControll(){
-        if(robotMap.buttonA.get()){
+       /* if(robotMap.buttonA.get()){
             robotMap.servo.set(1);
         }
 
         else if(robotMap.buttonB.get()){
             robotMap.servo.set(0);
-        }
+        }*/
     }
 
 
