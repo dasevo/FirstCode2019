@@ -13,14 +13,15 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.*;
+
 
 public class RobotMap {
 	
 	
 
 
-    public final Joystick controllerL = new Joystick(0);
-    public final Joystick controllerR = new Joystick(1);
+    public final Joystick controller = new Joystick(0);
 
     public final Talon driveFR = new Talon(0);
     public final Talon driveFL = new Talon(1);
@@ -32,9 +33,8 @@ public class RobotMap {
 
 	public final DifferentialDrive drive = new DifferentialDrive(left, right);
 	
-	public final Servo servo = new Servo(1);
-	public final JoystickButton buttonA = new JoystickButton(controllerL, 5);
-	public final JoystickButton buttonB = new JoystickButton(controllerL, 7);
+	//public final Servo servo = new Servo(1);
+	
 
 	
 	/*
@@ -92,23 +92,28 @@ public class RobotMap {
 	
 	public double getLeftY()
 	{
-		return -deadzone(controllerL.getY());
+		return -deadzone(controller.getY())*0.6;
 	}
 	
 	public double getLeftX()
 	{
-		return deadzone(controllerL.getX());
+		return deadzone(controller.getX());
 	}
 	
 	public double getRightY()
 	{
-		return -deadzone(controllerR.getY());
+		return -deadzone(controller.getY());
 	}
 	
 	public double getRightX()
 	{
-		return deadzone(controllerR.getX());
+		return deadzone(controller.getX());
 	}	
+
+	public double getTurn()
+	{
+		return deadzone(controller.getTwist())*0.55;
+	}
 
 
 }
