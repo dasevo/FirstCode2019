@@ -32,7 +32,7 @@ public class RobotMap {
 
 	public final DifferentialDrive drive = new DifferentialDrive(left, right);
 	
-	public final Servo servo = new Servo(1);
+	//public final Servo servo = new Servo(1);
 	
 
 	
